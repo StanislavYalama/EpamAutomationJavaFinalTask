@@ -1,6 +1,8 @@
 package com.epam.training.stanislav_yalama.stepdefs;
 
+import com.epam.training.stanislav_yalama.driver.DriverFactory;
 import com.epam.training.stanislav_yalama.pages.LoginPage;
+import com.epam.training.stanislav_yalama.utils.LoggerManager;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -9,22 +11,16 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.time.Duration;
 
 public class LoginStepDefinition {
-    private WebDriver driver;
     private LoginPage loginPage;
-    private static final Logger log = LoggerFactory.getLogger(LoginStepDefinition.class);
+    private static final Logger log = LoggerManager.getLogger();
 
     @Before
     public void setup() {
-        driver = new ChromeDriver();
-        this.driver.manage().window().maximize();
-        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        WebDriver driver = DriverFactory.getDriver();
+        driver.manage().window().maximize();
 
         loginPage = new LoginPage(driver);
     }
@@ -73,6 +69,6 @@ public class LoginStepDefinition {
 
     @After
     public void shutdownBrowser() {
-        driver.quit();
+        DriverFactory.quitDriver();
     }
 }

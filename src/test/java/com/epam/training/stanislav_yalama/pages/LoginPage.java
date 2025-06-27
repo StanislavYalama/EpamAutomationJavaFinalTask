@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
-    private WebDriver driver;
+    private final WebDriver driver;
     private static String BASE_URL = "https://www.saucedemo.com";
 
     @FindBy(xpath = "//input[@id='user-name']")

@@ -16,8 +16,17 @@ Feature: Is the login function working correctly?
     And Hit the Login button
     Then I should receive message "Password is required"
 
-  Scenario: UC-3 Test Login form with credentials by passing Username & Password
+  Scenario Outline: UC-3 Test Login form with credentials by passing Username & Password
     Given Login page is opened
     When Enter username as "<accepted username>" and password as "secret_sauce"
     And Hit the Login button
     Then Page title should be "Swag Labs"
+
+    Examples:
+    | accepted username |
+    | standard_user     |
+    | locked_out_user   |
+    | problem_user      |
+    | performance_glitch_user |
+    | error_user              |
+    | visual_user             |
