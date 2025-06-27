@@ -12,6 +12,12 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <cucumber.version>7.23.0</cucumber.version>
+    <selenium.version>4.33.0</selenium.version>
+    <jupiter.version>5.13.1</jupiter.version>
+    <junit-suit.version>1.13.1</junit-suit.version>
+    <webdrivermanager.version>6.1.0</webdrivermanager.version>
+    <slf4j.version>2.0.17</slf4j.version>
   </properties>
 
   <dependencies>
@@ -19,26 +25,46 @@
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-java</artifactId>
-      <version>7.23.0</version>
+      <version>${cucumber.version}</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit-platform-engine -->
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-junit-platform-engine</artifactId>
-      <version>7.23.0</version>
+      <version>${cucumber.version}</version>
       <scope>test</scope>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
-      <version>4.33.0</version>
+      <version>${selenium.version}</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+    <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <version>5.13.1</version>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>${jupiter.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-suite -->
+    <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-suite</artifactId>
+      <version>${junit-suit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>${webdrivermanager.version}</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>${slf4j.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
