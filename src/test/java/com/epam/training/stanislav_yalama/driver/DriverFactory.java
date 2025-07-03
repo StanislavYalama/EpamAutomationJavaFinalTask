@@ -6,27 +6,32 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverFactory {
-    private static WebDriver driver;
+    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     public static WebDriver getDriver() {
-        if(driver != null)  {
-            return driver;
-        } else {
+
+        if(driver.get() == null) {
             String browser = System.getProperty("browser", "firefox");
 
-            return driver = switch(browser.toLowerCase()) {
+            WebDriver newDriver = switch (browser.toLowerCase()) {
                 case "firefox" -> new FirefoxDriver();
                 case "edge" -> new EdgeDriver();
                 case "chrome" -> new ChromeDriver();
                 default -> throw new RuntimeException("Unsupported browser: " + browser);
             };
+
+            driver.set(newDriver);
         }
+
+        return driver.get();
     }
 
     public static void quitDriver() {
-        if(driver != null) {
-            driver.quit();
-            driver = null;
+        WebDriver currentDriver = driver.get();
+        if (currentDriver != null) {
+            currentDriver.quit();
+            driver.remove();
         }
     }
 }
+
